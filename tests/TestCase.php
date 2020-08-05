@@ -61,7 +61,7 @@ abstract class TestCase extends Orchestra
             'prefix' => '',
         ]);
 
-        $app['config']->set('view.paths', [__DIR__ . '/views']);
+        $app['config']->set('view.paths', [__DIR__ . '/resources/views']);
 
         // Set-up admin guard
         $app['config']->set('auth.guards.admin', ['driver' => 'session', 'provider' => 'admins']);

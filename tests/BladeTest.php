@@ -111,7 +111,7 @@ class BladeTest extends TestCase
     {
         auth()->setUser($this->getWriter());
 
-        $this->assertEquals('does not have role', $this->renderView('unlessrole', ['role' => 'another']));
+        $this->assertEquals('does not have role', $this->renderView('unlessRole', ['role' => 'another']));
     }
 
     /** @test */
@@ -119,8 +119,8 @@ class BladeTest extends TestCase
     {
         auth('admin')->setUser($this->getSuperAdmin());
 
-        $this->assertEquals('does not have role', $this->renderView('guardunlessrole', ['role' => 'another', 'guard' => 'admin']));
-        $this->assertEquals('does not have role', $this->renderView('guardunlessrole', ['role' => 'super-admin', 'guard' => 'web']));
+        $this->assertEquals('does not have role', $this->renderView('guardUnlessRole', ['role' => 'another', 'guard' => 'admin']));
+        $this->assertEquals('does not have role', $this->renderView('guardUnlessRole', ['role' => 'super-admin', 'guard' => 'web']));
     }
 
     /** @test */
