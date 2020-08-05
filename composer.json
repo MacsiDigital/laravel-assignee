@@ -1,0 +1,63 @@
+{
+    "name": "macsidigital/laravel-assignee",
+    "description": "Role handling for Laravel",
+    "keywords": [
+        "macsidigital",
+        "laravel",
+        "assignee",
+        "user roles"
+    ],
+    "homepage": "https://github.com/macsidigital/laravel-assignee",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Colin hall",
+            "email": "colin@macsi.co.uk",
+            "homepage": "https://macsi.co.uk",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php" : "^7.2",
+        "illuminate/auth": "^6.0|^7.0",
+        "illuminate/container": "^6.0|^7.0",
+        "illuminate/contracts": "^6.0|^7.0",
+        "illuminate/database": "^6.0|^7.0"
+    },
+    "require-dev": {
+        "friendsofphp/php-cs-fixer": "^2.16",
+        "orchestra/testbench": "^4.0|^5.0",
+        "phpunit/phpunit": "^8.0|^9.0",
+        "psalm/plugin-laravel": "^1.2",
+        "vimeo/psalm": "^3.11"
+    },
+    "autoload": {
+        "psr-4": {
+            "Assignee\\": "src"
+        },
+        "files": [
+            "src/helpers.php"
+        ]
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Assignee\\Test\\": "tests"
+        }
+    },
+    "scripts": {
+        "psalm": "vendor/bin/psalm",
+        "test": "vendor/bin/phpunit",
+        "test-coverage": "vendor/bin/phpunit --coverage-html coverage",
+        "format": "vendor/bin/php-cs-fixer fix --allow-risky=yes"
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Assignee\\Providers\\AssigneeServiceProvider"
+            ]
+        }
+    }
+}
