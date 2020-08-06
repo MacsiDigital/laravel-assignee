@@ -30,7 +30,9 @@ This package can be used in Laravel 6.0 or higher.
 
 You can install the package via composer:
 
+``` bash
 composer require macsidigital/laravel-assignee
+```
 
 You must publish the migration with:
 

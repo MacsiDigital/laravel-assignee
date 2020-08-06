@@ -9,6 +9,7 @@
     ],
     "homepage": "https://github.com/macsidigital/laravel-assignee",
     "license": "MIT",
+    "type": "library",
     "authors": [
         {
             "name": "Colin hall",
