@@ -19,7 +19,7 @@ class Role extends Model implements RoleContract
 
         parent::__construct($attributes);
 
-        $this->setTable(config('Assignee.table_names.roles'));
+        $this->setTable(config('assignee.table_names.roles'));
     }
 
     public static function create(array $attributes = [])
