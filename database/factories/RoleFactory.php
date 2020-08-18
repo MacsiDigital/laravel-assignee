@@ -1,7 +1,6 @@
 <?php
 
-use Assignee\Role;
-use Illuminate\Support\Str;
+use Assignee\Models\Role;
 use Faker\Generator as Faker;
 
 /*
