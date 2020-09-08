@@ -4,4 +4,8 @@ docs
 vendor
 coverage
 tests/temp
+node_modules
+.phpunit.result.cache
 .idea
+/.idea
+.php_cs.cache
