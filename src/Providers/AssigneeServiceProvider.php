@@ -5,11 +5,15 @@ namespace Assignee\Providers;
 use Assignee\Console\Commands\CreateRole;
 use Assignee\Console\Commands\Install;
 use Assignee\Contracts\Role as RoleContract;
+use Assignee\Contracts\Package as PackageContract;
+use Assignee\Package;
+use Assignee\Http\Middleware\RoleMiddleware;
 use Illuminate\Filesystem\Filesystem;
 use Illuminate\Routing\Route;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Str;
 use Illuminate\View\Compilers\BladeCompiler;
+use MacsiDigital\Analytics\Http\Middleware\AnalyticsMiddleware;
 
 class AssigneeServiceProvider extends ServiceProvider
 {
@@ -23,7 +27,7 @@ class AssigneeServiceProvider extends ServiceProvider
             ], 'assignee-config');
 
             $this->publishes($this->getNewMigrations(), 'assignee-migrations');
-        
+
             $this->commands([
                 CreateRole::class,
                 Install::class,
@@ -46,6 +50,9 @@ class AssigneeServiceProvider extends ServiceProvider
     protected function registerModelBindings()
     {
         $config = $this->app->config['assignee.models'];
+
+        $this->app->bind('assignee', PackageContract::class);
+        $this->app->bind(PackageContract::class, Package::class);
 
         $this->app->bind('assignee.role', RoleContract::class);
         $this->app->bind(RoleContract::class, $config['role']);
@@ -106,6 +113,11 @@ class AssigneeServiceProvider extends ServiceProvider
         });
     }
 
+    protected function registerMiddleware()
+    {
+        $this->app['router']->aliasMiddleware(config('assignee.middleware_key'), RoleMiddleware::class);
+    }
+
     protected function registerMacroHelpers()
     {
         Route::macro('role', function ($roles = []) {
@@ -124,7 +136,7 @@ class AssigneeServiceProvider extends ServiceProvider
     protected function getNewMigrations()
     {
         $global_migrations = collect((new Filesystem)->files(database_path('/migrations')));
-        
+
         $migrations = [];
         foreach ((new Filesystem)->files(__DIR__.'/../../database/migrations') as $migration) {
             if (! $global_migrations->contains(function ($value, $key) use ($migration) {
@@ -135,7 +147,7 @@ class AssigneeServiceProvider extends ServiceProvider
                 $migrations[__DIR__.'/../../database/migrations/'.$migration->getRelativePathname()] = database_path('migrations/'.date('Y_m_d_His').'_'.$migration->getFilenameWithoutExtension());
             }
         }
-        
+
         return $migrations;
     }
 }

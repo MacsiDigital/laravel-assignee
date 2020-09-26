@@ -58,7 +58,10 @@
         "laravel": {
             "providers": [
                 "Assignee\\Providers\\AssigneeServiceProvider"
-            ]
+            ],
+            "aliases": {
+                "Assignee": "Assignee\\Facades\\Package"
+            }
         }
     }
 }
