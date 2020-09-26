@@ -4,16 +4,15 @@ namespace Assignee\Providers;
 
 use Assignee\Console\Commands\CreateRole;
 use Assignee\Console\Commands\Install;
-use Assignee\Contracts\Role as RoleContract;
 use Assignee\Contracts\Package as PackageContract;
-use Assignee\Package;
+use Assignee\Contracts\Role as RoleContract;
 use Assignee\Http\Middleware\RoleMiddleware;
+use Assignee\Package;
 use Illuminate\Filesystem\Filesystem;
 use Illuminate\Routing\Route;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Str;
 use Illuminate\View\Compilers\BladeCompiler;
-use MacsiDigital\Analytics\Http\Middleware\AnalyticsMiddleware;
 
 class AssigneeServiceProvider extends ServiceProvider
 {
