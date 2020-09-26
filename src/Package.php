@@ -4,7 +4,7 @@ namespace Assignee;
 
 class Package
 {
-    const VERSION = '1.1.1';
+    const VERSION = '1.1.2';
 
     public function version()
     {

@@ -18,6 +18,7 @@ class AssigneeServiceProvider extends ServiceProvider
 {
     public function boot()
     {
+        $this->registerMiddleware();
         $this->registerMacroHelpers();
 
         if ($this->app->runningInConsole()) {

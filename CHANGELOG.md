@@ -2,6 +2,10 @@
 
 All notable changes to `laravel-assignee` will be documented in this file
 
+##  1.1.2 - 2020-09-26
+
+- remembered to register the middleware!
+
 ##  1.1.1 - 2020-09-26
 
 - Add Package Model
