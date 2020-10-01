@@ -26,6 +26,14 @@ You can install the package via composer:
 composer require macsidigital/laravel-assignee
 ```
 
+You can either publish the migration and config files separatly or use our helpful install command
+
+The install function
+
+``` bash
+php artisan assignee:install
+```
+
 You must publish the migration with:
 
 ``` bash
