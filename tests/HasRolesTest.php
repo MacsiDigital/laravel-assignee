@@ -1,10 +1,10 @@
 <?php
 
-namespace Assignee\Test;
+namespace Roles\Test;
 
-use Assignee\Contracts\Role;
-use Assignee\Exceptions\GuardDoesNotMatch;
-use Assignee\Exceptions\RoleDoesNotExist;
+use Roles\Contracts\Role;
+use Roles\Exceptions\GuardDoesNotMatch;
+use Roles\Exceptions\RoleDoesNotExist;
 
 class HasRolesTest extends TestCase
 {
@@ -241,11 +241,11 @@ class HasRolesTest extends TestCase
 
         $user->assignRole('testRole');
 
-        $this->assertDatabaseHas('model_has_roles', [config('assignee.column_names.model_morph_key') => $user->id]);
+        $this->assertDatabaseHas('model_has_roles', [config('roles.column_names.model_morph_key') => $user->id]);
 
         $user->delete();
 
-        $this->assertDatabaseMissing('model_has_roles', [config('assignee.column_names.model_morph_key') => $user->id]);
+        $this->assertDatabaseMissing('model_has_roles', [config('roles.column_names.model_morph_key') => $user->id]);
     }
 
     /** @test */

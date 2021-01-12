@@ -1,9 +1,9 @@
 <?php
 
-namespace Assignee\Test;
+namespace Roles\Test;
 
 use Artisan;
-use Assignee\Contracts\Role;
+use Roles\Contracts\Role;
 
 class BladeTest extends TestCase
 {

@@ -1,6 +1,6 @@
 <?php
 
-namespace Assignee\Contracts;
+namespace Roles\Contracts;
 
 interface Role
 {
@@ -11,9 +11,9 @@ interface Role
      * @param string $name
      * @param string|null $guardName
      *
-     * @return \Assignee\Contracts\Role
+     * @return \Roles\Contracts\Role
      *
-     * @throws \Assignee\Exceptions\RoleDoesNotExist
+     * @throws \Roles\Exceptions\RoleDoesNotExist
      */
     public static function findByName(string $name, $guardName = null): Role;
 
@@ -23,9 +23,9 @@ interface Role
      * @param int $id
      * @param string|null $guardName
      *
-     * @return \Assignee\Contracts\Role
+     * @return \Roles\Contracts\Role
      *
-     * @throws \Assignee\Exceptions\RoleDoesNotExist
+     * @throws \Roles\Exceptions\RoleDoesNotExist
      */
     public static function findById(int $id, $guardName): Role;
 
@@ -35,7 +35,7 @@ interface Role
      * @param string $name
      * @param string|null $guardName
      *
-     * @return \Assignee\Contracts\Role
+     * @return \Roles\Contracts\Role
      */
     public static function findOrCreate(string $name, $guardName): Role;
 }

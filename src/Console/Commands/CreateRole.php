@@ -1,13 +1,13 @@
 <?php
 
-namespace Assignee\Console\Commands;
+namespace Roles\Console\Commands;
 
-use Assignee\Facades\Role;
+use Roles\Facades\Role;
 use Illuminate\Console\Command;
 
 class CreateRole extends Command
 {
-    protected $signature = 'assignee:create-role
+    protected $signature = 'roles:create
         {name : The name of the role}
         {guard? : The name of the guard}';
 

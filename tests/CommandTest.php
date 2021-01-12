@@ -1,8 +1,8 @@
 <?php
 
-namespace Assignee\Test;
+namespace Roles\Test;
 
-use Assignee\Models\Role;
+use Roles\Models\Role;
 use Illuminate\Support\Facades\Artisan;
 
 class CommandTest extends TestCase
@@ -10,7 +10,7 @@ class CommandTest extends TestCase
     /** @test */
     public function it_can_create_a_role()
     {
-        Artisan::call('assignee:create-role', ['name' => 'new-role']);
+        Artisan::call('roles:create', ['name' => 'new-role']);
 
         $this->assertCount(1, Role::where('name', 'new-role')->get());
     }
@@ -18,7 +18,7 @@ class CommandTest extends TestCase
     /** @test */
     public function it_can_create_a_role_with_a_specific_guard()
     {
-        Artisan::call('assignee:create-role', [
+        Artisan::call('roles:create', [
             'name' => 'new-role',
             'guard' => 'api',
         ]);
@@ -31,8 +31,8 @@ class CommandTest extends TestCase
     /** @test */
     public function it_can_create_a_role_without_duplication()
     {
-        Artisan::call('assignee:create-role', ['name' => 'new-role']);
-        Artisan::call('assignee:create-role', ['name' => 'new-role']);
+        Artisan::call('roles:create', ['name' => 'new-role']);
+        Artisan::call('roles:create', ['name' => 'new-role']);
 
         $this->assertCount(1, Role::where('name', 'new-role')->get());
     }

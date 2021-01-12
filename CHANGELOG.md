@@ -1,6 +1,10 @@
 # Changelog
 
-All notable changes to `laravel-assignee` will be documented in this file
+All notable changes to `laravel-roles` will be documented in this file
+
+##  1.2.0 - 2021-01-12
+
+- Rename to laravel-roles
 
 ##  1.1.2 - 2020-09-26
 

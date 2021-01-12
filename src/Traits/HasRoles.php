@@ -1,11 +1,11 @@
 <?php
 
-namespace Assignee\Traits;
+namespace Roles\Traits;
 
-use Assignee\Contracts\Role as RoleContract;
-use Assignee\Exceptions\GuardDoesNotMatch;
-use Assignee\Facades\Role;
-use Assignee\Guard;
+use Roles\Contracts\Role as RoleContract;
+use Roles\Exceptions\GuardDoesNotMatch;
+use Roles\Facades\Role;
+use Roles\Guard;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Relations\MorphToMany;
 use Illuminate\Support\Collection;
@@ -29,10 +29,10 @@ trait HasRoles
     public function roles(): MorphToMany
     {
         return $this->morphToMany(
-            config('assignee.models.role'),
+            config('roles.models.role'),
             'model',
-            config('assignee.table_names.model_has_roles'),
-            config('assignee.column_names.model_morph_key'),
+            config('roles.table_names.model_has_roles'),
+            config('roles.column_names.model_morph_key'),
             'role_id'
         );
     }
@@ -41,7 +41,7 @@ trait HasRoles
      * Scope the model query to certain roles only.
      *
      * @param \Illuminate\Database\Eloquent\Builder $query
-     * @param string|array|\Assignee\Contracts\Role|\Illuminate\Support\Collection $roles
+     * @param string|array|\Roles\Contracts\Role|\Illuminate\Support\Collection $roles
      * @param string $guard
      *
      * @return \Illuminate\Database\Eloquent\Builder
@@ -70,7 +70,7 @@ trait HasRoles
         return $query->whereHas('roles', function ($query) use ($roles) {
             $query->where(function ($query) use ($roles) {
                 foreach ($roles as $role) {
-                    $query->orWhere(config('assignee.table_names.roles').'.id', $role->id);
+                    $query->orWhere(config('roles.table_names.roles').'.id', $role->id);
                 }
             });
         });
@@ -79,7 +79,7 @@ trait HasRoles
     /**
      * Assign the given role to the model.
      *
-     * @param array|string|\Assignee\Contracts\Role ...$roles
+     * @param array|string|\Roles\Contracts\Role ...$roles
      *
      * @return $this
      */
@@ -102,7 +102,7 @@ trait HasRoles
             })
             ->map->id
             ->all();
-        
+
         $model = $this->getModel();
 
         if ($model->exists) {
@@ -130,7 +130,7 @@ trait HasRoles
     /**
      * Revoke the given role from the model.
      *
-     * @param string|\Assignee\Contracts\Role $role
+     * @param string|\Roles\Contracts\Role $role
      */
     public function removeRole($role)
     {
@@ -144,7 +144,7 @@ trait HasRoles
     /**
      * Remove all current roles and set the given ones.
      *
-     * @param array|\Assignee\Contracts\Role|string ...$roles
+     * @param array|\Roles\Contracts\Role|string ...$roles
      *
      * @return $this
      */
@@ -158,7 +158,7 @@ trait HasRoles
     /**
      * Determine if the model has (one of) the given role(s).
      *
-     * @param string|int|array|\Assignee\Contracts\Role|\Illuminate\Support\Collection $roles
+     * @param string|int|array|\Roles\Contracts\Role|\Illuminate\Support\Collection $roles
      *
      * @return bool
      */
@@ -196,7 +196,7 @@ trait HasRoles
     /**
      * Determine if the model has any of the given role(s).
      *
-     * @param string|array|\Assignee\Contracts\Role|\Illuminate\Support\Collection $roles
+     * @param string|array|\Roles\Contracts\Role|\Illuminate\Support\Collection $roles
      *
      * @return bool
      */
@@ -208,7 +208,7 @@ trait HasRoles
     /**
      * Determine if the model has all of the given role(s).
      *
-     * @param string|\Assignee\Contracts\Role|\Illuminate\Support\Collection $roles
+     * @param string|\Roles\Contracts\Role|\Illuminate\Support\Collection $roles
      *
      * @return bool
      */
@@ -279,9 +279,9 @@ trait HasRoles
     }
 
     /**
-     * @param \Assignee\Contracts\Permission|\Assignee\Contracts\Role $roleOrPermission
+     * @param \Roles\Contracts\Permission|\Roles\Contracts\Role $roleOrPermission
      *
-     * @throws \Assignee\Exceptions\GuardDoesNotMatch
+     * @throws \Roles\Exceptions\GuardDoesNotMatch
      */
     protected function ensureModelSharesGuard($role)
     {

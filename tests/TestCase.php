@@ -1,18 +1,18 @@
 <?php
 
-namespace Assignee\Test;
+namespace Roles\Test;
 
-use Assignee\Contracts\Role;
-use Assignee\Providers\AssigneeServiceProvider;
+use Roles\Contracts\Role;
+use Roles\Providers\RolesServiceProvider;
 use Illuminate\Database\Schema\Blueprint;
 use Orchestra\Testbench\TestCase as Orchestra;
 
 abstract class TestCase extends Orchestra
 {
-    /** @var \Assignee\Test\User */
+    /** @var \Role\Test\User */
     protected $testUser;
 
-    /** @var \Assignee\Test\Admin */
+    /** @var \Role\Test\Admin */
     protected $testAdmin;
 
     /** @var Role */
@@ -43,7 +43,7 @@ abstract class TestCase extends Orchestra
     protected function getPackageProviders($app)
     {
         return [
-            AssigneeServiceProvider::class,
+            RolesServiceProvider::class,
         ];
     }
 
@@ -78,7 +78,7 @@ abstract class TestCase extends Orchestra
      */
     protected function setUpDatabase($app)
     {
-        $app['config']->set('permission.column_names.model_morph_key', 'model_test_id');
+        $app['config']->set('roles.column_names.model_morph_key', 'model_test_id');
 
         $app['db']->connection()->getSchemaBuilder()->create('users', function (Blueprint $table) {
             $table->increments('id');
@@ -91,9 +91,9 @@ abstract class TestCase extends Orchestra
             $table->string('email');
         });
 
-        include_once __DIR__ . '/../database/migrations/create_assignee_tables.php.stub';
+        include_once __DIR__ . '/../database/migrations/create_roles_tables.php.stub';
 
-        (new \CreateAssigneeTables())->up();
+        (new \CreateRolesTables())->up();
 
         User::create(['email' => 'test@user.com']);
         Admin::create(['email' => 'admin@user.com']);

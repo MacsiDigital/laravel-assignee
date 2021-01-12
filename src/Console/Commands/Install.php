@@ -1,6 +1,6 @@
 <?php
 
-namespace Assignee\Console\Commands;
+namespace Roles\Console\Commands;
 
 use Illuminate\Console\Command;
 
@@ -12,14 +12,14 @@ class Install extends Command
      *
      * @var string
      */
-    protected $signature = 'assignee:install';
+    protected $signature = 'roles:install';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'Install all of the Assignee resources';
+    protected $description = 'Install all of the role resources';
 
     /**
      * Execute the console command.
@@ -28,12 +28,12 @@ class Install extends Command
      */
     public function handle()
     {
-        $this->comment('Publishing Assignee Migrations...');
-        $this->callSilent('vendor:publish', ['--tag' => 'assignee-migrations']);
+        $this->comment('Publishing Role Migrations...');
+        $this->callSilent('vendor:publish', ['--tag' => 'roles-migrations']);
 
-        $this->comment('Publishing Assignee Config...');
-        $this->callSilent('vendor:publish', ['--tag' => 'assignee-config']);
+        $this->comment('Publishing Role Config...');
+        $this->callSilent('vendor:publish', ['--tag' => 'roles-config']);
 
-        $this->info('Assignee scaffolding installed successfully.');
+        $this->info('Role scaffolding installed successfully.');
     }
 }

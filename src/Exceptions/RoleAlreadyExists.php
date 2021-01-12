@@ -1,6 +1,6 @@
 <?php
 
-namespace Assignee\Exceptions;
+namespace Roles\Exceptions;
 
 use InvalidArgumentException;
 

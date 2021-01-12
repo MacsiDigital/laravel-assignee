@@ -1,8 +1,8 @@
 <?php
 
-namespace Assignee\Http\Middleware;
+namespace Roles\Http\Middleware;
 
-use Assignee\Exceptions\UnauthorizedException;
+use Roles\Exceptions\UnauthorizedException;
 use Closure;
 use Illuminate\Support\Facades\Auth;
 

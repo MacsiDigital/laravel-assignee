@@ -1,10 +1,10 @@
 <?php
 
-namespace Assignee\Test;
+namespace Roles\Test;
 
-use Assignee\Contracts\Role;
-use Assignee\Exceptions\RoleAlreadyExists;
-use Assignee\Exceptions\RoleDoesNotExist;
+use Roles\Contracts\Role;
+use Roles\Exceptions\RoleAlreadyExists;
+use Roles\Exceptions\RoleDoesNotExist;
 
 class RoleTest extends TestCase
 {

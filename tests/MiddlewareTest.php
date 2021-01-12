@@ -1,9 +1,9 @@
 <?php
 
-namespace Assignee\Test;
+namespace Roles\Test;
 
-use Assignee\Exceptions\UnauthorizedException;
-use Assignee\Http\Middleware\RoleMiddleware;
+use Roles\Exceptions\UnauthorizedException;
+use Roles\Http\Middleware\RoleMiddleware;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;

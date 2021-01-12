@@ -4,7 +4,7 @@ return [
 
     'models' => [
 
-        'role' => Assignee\Models\Role::class,
+        'role' => Roles\Models\Role::class,
 
     ],
 

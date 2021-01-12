@@ -1,20 +1,20 @@
 <?php
 
-namespace Assignee\Providers;
+namespace Roles\Providers;
 
-use Assignee\Console\Commands\CreateRole;
-use Assignee\Console\Commands\Install;
-use Assignee\Contracts\Package as PackageContract;
-use Assignee\Contracts\Role as RoleContract;
-use Assignee\Http\Middleware\RoleMiddleware;
-use Assignee\Package;
+use Roles\Console\Commands\CreateRole;
+use Roles\Console\Commands\Install;
+use Roles\Contracts\Package as PackageContract;
+use Roles\Contracts\Role as RoleContract;
+use Roles\Http\Middleware\RoleMiddleware;
+use Roles\Package;
 use Illuminate\Filesystem\Filesystem;
 use Illuminate\Routing\Route;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Str;
 use Illuminate\View\Compilers\BladeCompiler;
 
-class AssigneeServiceProvider extends ServiceProvider
+class RolesServiceProvider extends ServiceProvider
 {
     public function boot()
     {
@@ -23,10 +23,10 @@ class AssigneeServiceProvider extends ServiceProvider
 
         if ($this->app->runningInConsole()) {
             $this->publishes([
-                __DIR__.'/../../config/config.php' => config_path('assignee.php'),
-            ], 'assignee-config');
+                __DIR__.'/../../config/config.php' => config_path('roles.php'),
+            ], 'roles-config');
 
-            $this->publishes($this->getNewMigrations(), 'assignee-migrations');
+            $this->publishes($this->getNewMigrations(), 'roles-migrations');
 
             $this->commands([
                 CreateRole::class,
@@ -39,7 +39,7 @@ class AssigneeServiceProvider extends ServiceProvider
     {
         $this->mergeConfigFrom(
             __DIR__.'/../../config/config.php',
-            'assignee'
+            'roles'
         );
 
         $this->registerModelBindings();
@@ -49,12 +49,12 @@ class AssigneeServiceProvider extends ServiceProvider
 
     protected function registerModelBindings()
     {
-        $config = $this->app->config['assignee.models'];
+        $config = $this->app->config['roles.models'];
 
-        $this->app->bind('assignee', PackageContract::class);
+        $this->app->bind('roles', PackageContract::class);
         $this->app->bind(PackageContract::class, Package::class);
 
-        $this->app->bind('assignee.role', RoleContract::class);
+        $this->app->bind('roles.role', RoleContract::class);
         $this->app->bind(RoleContract::class, $config['role']);
     }
 
@@ -115,7 +115,7 @@ class AssigneeServiceProvider extends ServiceProvider
 
     protected function registerMiddleware()
     {
-        $this->app['router']->aliasMiddleware(config('assignee.middleware_key'), RoleMiddleware::class);
+        $this->app['router']->aliasMiddleware(config('roles.middleware_key'), RoleMiddleware::class);
     }
 
     protected function registerMacroHelpers()

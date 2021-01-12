@@ -1,13 +1,13 @@
 {
-    "name": "macsidigital/laravel-assignee",
+    "name": "macsidigital/laravel-roles",
     "description": "Role handling for Laravel",
     "keywords": [
         "macsidigital",
         "laravel",
-        "assignee",
+        "Role",
         "user roles"
     ],
-    "homepage": "https://github.com/macsidigital/laravel-assignee",
+    "homepage": "https://github.com/macsidigital/laravel-roles",
     "license": "MIT",
     "type": "library",
     "authors": [
@@ -19,7 +19,7 @@
         }
     ],
     "require": {
-        "php" : "^7.3",
+        "php" : "^7.3|^8.0",
         "illuminate/auth": "^6.0|^7.0|^8.0",
         "illuminate/container": "^6.0|^7.0|^8.0",
         "illuminate/contracts": "^6.0|^7.0|^8.0",
@@ -32,7 +32,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Assignee\\": "src"
+            "Roles\\": "src"
         },
         "files": [
             "src/helpers.php"
@@ -40,11 +40,10 @@
     },
     "autoload-dev": {
         "psr-4": {
-            "Assignee\\Test\\": "tests"
+            "Roles\\Test\\": "tests"
         }
     },
     "scripts": {
-        "psalm": "vendor/bin/psalm",
         "test": "vendor/bin/phpunit",
         "test-coverage": "vendor/bin/phpunit --coverage-html coverage",
         "format": "vendor/bin/php-cs-fixer fix --allow-risky=yes"
@@ -55,10 +54,10 @@
     "extra": {
         "laravel": {
             "providers": [
-                "Assignee\\Providers\\AssigneeServiceProvider"
+                "Roles\\Providers\\RolesServiceProvider"
             ],
             "aliases": {
-                "Assignee": "Assignee\\Facades\\Package"
+                "Roles": "Roles\\Facades\\Package"
             }
         }
     }

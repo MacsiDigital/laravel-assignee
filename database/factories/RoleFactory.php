@@ -1,8 +1,8 @@
 <?php
 
-namespace Assignee\Factories;
+namespace Roles\Factories;
 
-use Assignee\Models\Role;
+use Roles\Models\Role;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class RoleFactory extends Factory

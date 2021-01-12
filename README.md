@@ -1,13 +1,13 @@
-# Laravel - Assignee
+# Laravel - Roles
 
 ## Associate users with roles
  
-![Header Image](https://github.com/MacsiDigital/repo-design/raw/master/laravel-assignee/header.png)
+![Header Image](https://github.com/MacsiDigital/repo-design/raw/master/laravel-roles/header.png)
 
 <p align="center">
- <a href="https://github.com/MacsiDigital/laravel-assignee/actions?query=workflow%3Atests"><img src="https://github.com/MacsiDigital/laravel-assignee/workflows/Run%20tests/badge.svg" style="max-width:100%;" alt="tests badge"></a>
- <a href="https://packagist.org/packages/macsidigital/laravel-assignee"><img src="https://img.shields.io/packagist/v/macsidigital/laravel-assignee.svg?style=flat-square" alt="version badge"/></a>
- <a href="https://packagist.org/packages/macsidigital/laravel-assignee"><img src="https://img.shields.io/packagist/dt/macsidigital/laravel-assignee.svg?style=flat-square" alt="downloads badge"/></a>
+ <a href="https://github.com/MacsiDigital/laravel-roles/actions?query=workflow%3Atests"><img src="https://github.com/MacsiDigital/laravel-roles/workflows/Run%20tests/badge.svg" style="max-width:100%;" alt="tests badge"></a>
+ <a href="https://packagist.org/packages/macsidigital/laravel-roles"><img src="https://img.shields.io/packagist/v/macsidigital/laravel-roles.svg?style=flat-square" alt="version badge"/></a>
+ <a href="https://packagist.org/packages/macsidigital/laravel-roles"><img src="https://img.shields.io/packagist/dt/macsidigital/laravel-roles.svg?style=flat-square" alt="downloads badge"/></a>
 </p>
 
 This package allows you to manage and assign user roles.
@@ -23,7 +23,7 @@ This package can be used in Laravel 6.0 or higher.
 You can install the package via composer:
 
 ``` bash
-composer require macsidigital/laravel-assignee
+composer require macsidigital/laravel-roles
 ```
 
 You can either publish the migration and config files separatly or use our helpful install command
@@ -31,13 +31,13 @@ You can either publish the migration and config files separatly or use our helpf
 The install function
 
 ``` bash
-php artisan assignee:install
+php artisan roles:install
 ```
 
 You must publish the migration with:
 
 ``` bash
-php artisan vendor:publish --tag="assignee-migrations"
+php artisan vendor:publish --tag="roles-migrations"
 ```
 
 After the migration has been published you can create the db tables by running the migrations:
@@ -49,7 +49,7 @@ php artisan migrate
 You can publish the config file with:
 
 ``` bash
-php artisan vendor:publish --tag="assignee-config"
+php artisan vendor:publish --tag="roles-config"
 ```
 
 ## Usage

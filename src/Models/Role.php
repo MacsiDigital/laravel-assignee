@@ -1,11 +1,11 @@
 <?php
 
-namespace Assignee\Models;
+namespace Roles\Models;
 
-use Assignee\Contracts\Role as RoleContract;
-use Assignee\Exceptions\RoleAlreadyExists;
-use Assignee\Exceptions\RoleDoesNotExist;
-use Assignee\Guard;
+use Roles\Contracts\Role as RoleContract;
+use Roles\Exceptions\RoleAlreadyExists;
+use Roles\Exceptions\RoleDoesNotExist;
+use Roles\Guard;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\MorphToMany;
 
@@ -19,7 +19,7 @@ class Role extends Model implements RoleContract
 
         parent::__construct($attributes);
 
-        $this->setTable(config('assignee.table_names.roles'));
+        $this->setTable(config('roles.table_names.roles'));
     }
 
     public static function create(array $attributes = [])
@@ -41,9 +41,9 @@ class Role extends Model implements RoleContract
         return $this->morphedByMany(
             getModelForGuard($this->attributes['guard_name']),
             'model',
-            config('assignee.table_names.model_has_roles'),
+            config('roles.table_names.model_has_roles'),
             'role_id',
-            config('assignee.column_names.model_morph_key')
+            config('roles.column_names.model_morph_key')
         );
     }
 
@@ -53,14 +53,14 @@ class Role extends Model implements RoleContract
      * @param string $name
      * @param string|null $guardName
      *
-     * @return \Assignee\Contracts\Role|\Assignee\Models\Role
+     * @return \Roles\Contracts\Role|\Roles\Models\Role
      *
-     * @throws \Assignee\Exceptions\RoleDoesNotExist
+     * @throws \Roles\Exceptions\RoleDoesNotExist
      */
     public static function findByName(string $name, $guardName = null): RoleContract
     {
         $guardName = $guardName ?? Guard::getDefaultName(static::class);
-        
+
         $role = static::where('name', $name)->where('guard_name', $guardName)->first();
 
         if (! $role) {
@@ -89,7 +89,7 @@ class Role extends Model implements RoleContract
      * @param string $name
      * @param string|null $guardName
      *
-     * @return \Assignee\Contracts\Role
+     * @return \Roles\Contracts\Role
      */
     public static function findOrCreate(string $name, $guardName = null): RoleContract
     {

@@ -1,6 +1,6 @@
 <?php
 
-namespace Assignee;
+namespace Roles;
 
 use Illuminate\Support\Collection;
 
@@ -44,7 +44,7 @@ class Guard
     public static function getDefaultName($class): string
     {
         $default = config('auth.defaults.guard');
-        
+
         return static::getNames($class)->first() ?: $default;
     }
 }

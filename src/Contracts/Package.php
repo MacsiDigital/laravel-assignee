@@ -1,6 +1,6 @@
 <?php
 
-namespace Assignee\Contracts;
+namespace Roles\Contracts;
 
 interface Package
 {

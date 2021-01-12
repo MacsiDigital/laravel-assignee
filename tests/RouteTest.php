@@ -1,6 +1,6 @@
 <?php
 
-namespace Assignee\Test;
+namespace Roles\Test;
 
 use Illuminate\Http\Response;
 
