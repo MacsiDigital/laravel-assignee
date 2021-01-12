@@ -2,17 +2,17 @@
 
 namespace Roles\Providers;
 
+use Illuminate\Filesystem\Filesystem;
+use Illuminate\Routing\Route;
+use Illuminate\Support\ServiceProvider;
+use Illuminate\Support\Str;
+use Illuminate\View\Compilers\BladeCompiler;
 use Roles\Console\Commands\CreateRole;
 use Roles\Console\Commands\Install;
 use Roles\Contracts\Package as PackageContract;
 use Roles\Contracts\Role as RoleContract;
 use Roles\Http\Middleware\RoleMiddleware;
 use Roles\Package;
-use Illuminate\Filesystem\Filesystem;
-use Illuminate\Routing\Route;
-use Illuminate\Support\ServiceProvider;
-use Illuminate\Support\Str;
-use Illuminate\View\Compilers\BladeCompiler;
 
 class RolesServiceProvider extends ServiceProvider
 {

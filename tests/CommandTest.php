@@ -2,8 +2,8 @@
 
 namespace Roles\Test;
 
-use Roles\Models\Role;
 use Illuminate\Support\Facades\Artisan;
+use Roles\Models\Role;
 
 class CommandTest extends TestCase
 {

@@ -2,11 +2,11 @@
 
 namespace Roles\Test;
 
-use Roles\Exceptions\UnauthorizedException;
-use Roles\Http\Middleware\RoleMiddleware;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
+use Roles\Exceptions\UnauthorizedException;
+use Roles\Http\Middleware\RoleMiddleware;
 
 class MiddlewareTest extends TestCase
 {

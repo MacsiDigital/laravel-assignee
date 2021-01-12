@@ -2,10 +2,10 @@
 
 namespace Roles\Test;
 
-use Roles\Contracts\Role;
-use Roles\Providers\RolesServiceProvider;
 use Illuminate\Database\Schema\Blueprint;
 use Orchestra\Testbench\TestCase as Orchestra;
+use Roles\Contracts\Role;
+use Roles\Providers\RolesServiceProvider;
 
 abstract class TestCase extends Orchestra
 {

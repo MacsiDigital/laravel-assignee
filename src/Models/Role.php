@@ -2,12 +2,12 @@
 
 namespace Roles\Models;
 
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\MorphToMany;
 use Roles\Contracts\Role as RoleContract;
 use Roles\Exceptions\RoleAlreadyExists;
 use Roles\Exceptions\RoleDoesNotExist;
 use Roles\Guard;
-use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\MorphToMany;
 
 class Role extends Model implements RoleContract
 {

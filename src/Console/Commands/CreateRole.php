@@ -2,8 +2,8 @@
 
 namespace Roles\Console\Commands;
 
-use Roles\Facades\Role;
 use Illuminate\Console\Command;
+use Roles\Facades\Role;
 
 class CreateRole extends Command
 {

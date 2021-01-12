@@ -2,9 +2,9 @@
 
 namespace Roles\Http\Middleware;
 
-use Roles\Exceptions\UnauthorizedException;
 use Closure;
 use Illuminate\Support\Facades\Auth;
+use Roles\Exceptions\UnauthorizedException;
 
 class RoleMiddleware
 {

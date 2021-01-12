@@ -2,13 +2,13 @@
 
 namespace Roles\Traits;
 
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Relations\MorphToMany;
+use Illuminate\Support\Collection;
 use Roles\Contracts\Role as RoleContract;
 use Roles\Exceptions\GuardDoesNotMatch;
 use Roles\Facades\Role;
 use Roles\Guard;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\Relations\MorphToMany;
-use Illuminate\Support\Collection;
 
 trait HasRoles
 {
