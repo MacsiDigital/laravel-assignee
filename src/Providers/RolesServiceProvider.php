@@ -49,13 +49,11 @@ class RolesServiceProvider extends ServiceProvider
 
     protected function registerModelBindings()
     {
-        $config = $this->app->config['roles.models'];
-
         $this->app->bind('roles', PackageContract::class);
         $this->app->bind(PackageContract::class, Package::class);
 
         $this->app->bind('roles.role', RoleContract::class);
-        $this->app->bind(RoleContract::class, $config['role']);
+        $this->app->bind(RoleContract::class, config('roles.models.role'));
     }
 
     protected function registerBladeExtensions()
